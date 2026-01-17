@@ -1,33 +1,90 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Enquêtes – Get4Card</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-    }
-    h1 {
-      text-align: center;
-      padding: 15px;
-    }
-    iframe {
-      width: 100%;
-      height: 2000px;
-      border: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get4Card – Gagne des Coins</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #000;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+}
+
+.coins-box {
+  background: #f5f5f5;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.info {
+  text-align: center;
+  font-size: 14px;
+  margin: 10px;
+}
+</style>
 </head>
+
 <body>
 
-  <h1>Gagne de l’argent en répondant à des enquêtes</h1>
+<header>
+  <h2>🎯 Get4Card</h2>
+  <p>Complète des enquêtes et gagne des coins</p>
+</header>
 
-  <iframe
-    src="https://offers.cpx-research.com/index.php?app_id=30987&ext_user_id=visitor">
-  </iframe>
+<div class="coins-box">
+  🪙 Coins : <span id="coins">0</span><br><br>
+  <button onclick="addCoins()">🎁 Enquête terminée</button>
+</div>
+
+<div class="info">
+  💡 5 000 coins = 5€<br>
+  💳 Paiements disponibles à partir de 5€
+</div>
+
+<!-- CPX RESEARCH -->
+<iframe 
+  width="100%" 
+  height="2000px" 
+  frameborder="0"
+  src="https://offers.cpx-research.com/index.php?app_id=30987&ext_user_id=testuser">
+</iframe>
+
+<script>
+let coins = 0;
+
+function addCoins() {
+  coins += 50;
+  document.getElementById("coins").innerText = coins;
+}
+</script>
 
 </body>
-</html>
+  </html>
