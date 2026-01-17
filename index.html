@@ -1,59 +1,85 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get4Card – Enquêtes</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #fff;
-}
-
-/* Bloc coins */
-.coins-box {
-  background: #000;
-  color: #fff;
-  padding: 15px;
-  text-align: center;
-  font-size: 16px;
-}
-
-/* Message coins */
-.coins-info {
-  background: #f4f4f4;
-  padding: 12px;
-  text-align: center;
-  font-size: 14px;
-  border-bottom: 1px solid #ddd;
-}
-
-/* iframe CPX */
-iframe {
-  width: 100%;
-  height: 2000px;
-  border: none;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Watch Ads</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body style="margin:0;font-family:Arial;background:#0f0f0f;color:white;text-align:center;">
 
-<div class="coins-box">
-  🪙 Récompenses en coins
-</div>
+  <!-- BANNIÈRE HAUT (FIXE) -->
+  <div style="min-height:120px;">
+    <script src="https://quge5.com/88/tag.min.js"
+            data-zone="203056"
+            async
+            data-cfasync="false"></script>
+  </div>
 
-<div class="coins-info">
-  ⏱️ Le temps n’est pas affiché<br>
-  💰 1 minute ≈ <b>5 coins</b><br>
-  🎁 5 000 coins = <b>5€</b>
-</div>
+  <div style="padding:16px;">
+    <h2>Regarde une publicité</h2>
+    <p id="timer-text">Clique sur le bouton pour lancer une pub</p>
+  </div>
 
-<iframe
-  src="https://offers.cpx-research.com/index.php?app_id=30987&ext_user_id=visitor">
-</iframe>
+  <!-- PUB VIA BOUTON -->
+  <div id="ad-zone" style="min-height:300px;"></div>
+
+  <div style="margin:20px;">
+    <button id="btn"
+      onclick="watchAd()"
+      style="padding:12px 24px;font-size:16px;border:none;border-radius:6px;cursor:pointer;">
+      Regarder une pub
+    </button>
+  </div>
+
+  <!-- BANNIÈRE BAS (FIXE) -->
+  <div style="min-height:120px;">
+    <script src="https://quge5.com/88/tag.min.js"
+            data-zone="203056"
+            async
+            data-cfasync="false"></script>
+  </div>
+
+  <script>
+    let time = 30;
+    let interval;
+
+    function watchAd() {
+      // charge une pub via le bouton
+      document.getElementById("ad-zone").innerHTML = `
+        <script src="https://quge5.com/88/tag.min.js"
+                data-zone="203056"
+                async
+                data-cfasync="false"><\/script>
+      `;
+      startTimer();
+    }
+
+    function startTimer() {
+      clearInterval(interval);
+      time = 30;
+
+      const btn = document.getElementById("btn");
+      btn.disabled = true;
+      btn.style.opacity = "0.5";
+
+      interval = setInterval(() => {
+        document.getElementById("timer-text").innerText =
+          "Temps restant : " + time + " secondes";
+        btn.innerText = "Attends (" + time + "s)";
+        time--;
+
+        if (time < 0) {
+          clearInterval(interval);
+          document.getElementById("timer-text").innerText =
+            "Tu peux relancer une pub";
+          btn.innerText = "Regarder une pub";
+          btn.disabled = false;
+          btn.style.opacity = "1";
+        }
+      }, 1000);
+    }
+  </script>
 
 </body>
-</html>
+  </html>
