@@ -3,97 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get4Card – Coins</title>
+<title>Get4Card – Enquêtes</title>
 
 <style>
 body {
-  font-family: Arial, sans-serif;
-  background: #ffffff;
-  color: #000;
   margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff;
 }
 
-header {
+/* Bloc coins */
+.coins-box {
   background: #000;
   color: #fff;
   padding: 15px;
   text-align: center;
+  font-size: 16px;
 }
 
-.profile {
+/* Message coins */
+.coins-info {
   background: #f4f4f4;
-  margin: 15px;
-  padding: 15px;
-  border-radius: 10px;
+  padding: 12px;
   text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
 }
 
-button {
-  background: #000;
-  color: #fff;
+/* iframe CPX */
+iframe {
+  width: 100%;
+  height: 2000px;
   border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.85;
-}
-
-.info {
-  font-size: 13px;
-  color: #555;
-  margin-top: 8px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h2>🎯 Get4Card</h2>
-  <p>Gagne des coins en complétant des enquêtes</p>
-</header>
-
-<div class="profile">
-  👤 Profil : <b>Invité</b><br><br>
-  🪙 Coins : <b><span id="coins">0</span></b><br><br>
-
-  <button onclick="addCoins()">✅ J’ai terminé une enquête</button>
-
-  <div class="info">
-    1 enquête ≈ +50 coins<br>
-    5 000 coins = 5€
-  </div>
+<div class="coins-box">
+  🪙 Récompenses en coins
 </div>
 
-<!-- ENQUÊTES CPX -->
+<div class="coins-info">
+  ⏱️ Le temps n’est pas affiché<br>
+  💰 1 minute ≈ <b>5 coins</b><br>
+  🎁 5 000 coins = <b>5€</b>
+</div>
+
 <iframe
-  src="https://offers.cpx-research.com/index.php?app_id=30987&ext_user_id=visitor"
-  width="100%"
-  height="2000"
-  frameborder="0">
+  src="https://offers.cpx-research.com/index.php?app_id=30987&ext_user_id=visitor">
 </iframe>
-
-<script>
-let coins = localStorage.getItem("coins");
-
-if (coins === null) {
-  coins = 0;
-} else {
-  coins = parseInt(coins);
-}
-
-document.getElementById("coins").innerText = coins;
-
-function addCoins() {
-  coins += 50;
-  localStorage.setItem("coins", coins);
-  document.getElementById("coins").innerText = coins;
-}
-</script>
 
 </body>
 </html>
